@@ -1,58 +1,86 @@
 import React from "react";
 import "./CSS/Sidebar.css";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import {useState} from 'react'
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
+import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import OfflineBoltOutlinedIcon from '@mui/icons-material/OfflineBoltOutlined';
+import PostAddOutlinedIcon from '@mui/icons-material/PostAddOutlined';
+import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
+import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined';
+import AccessibilityNewOutlinedIcon from '@mui/icons-material/AccessibilityNewOutlined';
 import SidebarOption from "./SidebarOption";
-import HomeIcon from "@material-ui/icons/Home";
-import SearchIcon from "@material-ui/icons/Search";
-import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import PermIdentityIcon from "@material-ui/icons/PermIdentity";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { Button } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
-import { useUserAuth } from "../context/UserAuthContext";
+import { Button } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home"
+import SearchIcon from "@mui/icons-material/Search"
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone"
+import MailOutlineIcon from "@mui/icons-material/MailOutline"
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder"
+import TwitterIcon from '@mui/icons-material/Twitter';
+import ListAltIcon from "@mui/icons-material/ListAlt"
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz"
 
-function Sidebar() {
-    const { logOut, user } = useUserAuth();
-    const navigate = useNavigate();
-    const handleLogout = async () => {
-      try {
-        await logOut();
-        navigate("/");
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-  return (
+
+function Sidebar(){
+  const options = [
+    { link: 'Bookmarks', icon: <BookmarkBorderOutlinedIcon fontSiz0px/> },
+    { link: 'List', icon: <ListAltOutlinedIcon/> },
+    { link: 'Topic', icon: <ChatOutlinedIcon/> },
+    { link: 'Moments', icon: <OfflineBoltOutlinedIcon/> },
+    { link: 'Newsletters', icon: <PostAddOutlinedIcon/> },
+    { link: 'Twitter Ads', icon: <CallMadeOutlinedIcon/> },
+    { link: 'Analytics', icon: <BarChartOutlinedIcon/> },
+    { link: 'Settings', icon: <SettingsOutlinedIcon/> },
+    { link: 'Help Center', icon: <HelpOutlineOutlinedIcon/> },
+    { link: 'Display', icon: <BrushOutlinedIcon/> },
+    { link: 'Keyboard shortcuts', icon: <AccessibilityNewOutlinedIcon/> },
+
+  ];
+
+  const [open, setOpen] = useState(false);
+
+  const handleClick = (event) => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return(
+
     <div className="sidebar">
-      <TwitterIcon className="sidebar__twitterIcon" style={{width:"100px"}}/>
+    <TwitterIcon className="sidebar__twitterIcon" style={{width:"80px",fontSize:"50px",color:"skyblue" ,marginLeft:"5px"}}/>
+        <SidebarOption text="Home" Icon={HomeIcon} />
+        <SidebarOption text="Explore" Icon={SearchIcon} />
+        <SidebarOption text="Notifications" Icon={NotificationsNoneIcon} />
+        <SidebarOption text="Messages" Icon={MailOutlineIcon} />
+        <SidebarOption text="Bookmarks" Icon={BookmarkBorderIcon} />
+        <SidebarOption text="Lists" Icon={ListAltIcon} />
+        <SidebarOption text="Profile" Icon={PermIdentityIcon} />
+        <Button onClick={handleClick} id="moreLinks">
+          <MoreHorizIcon/> More
+        </Button>
+        <Button id="tweet">
+          Tweet
+        </Button>
 
-      <SidebarOption active Icon={HomeIcon} text="Home" />
-      <SidebarOption Icon={SearchIcon} text="Explore" />
-      <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" />
-      <SidebarOption Icon={MailOutlineIcon} text="Messages" />
-      <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" />
-      <SidebarOption Icon={ListAltIcon} text="Lists" />
-      <SidebarOption Icon={PermIdentityIcon} text="Profile" />
-      <SidebarOption Icon={MoreHorizIcon} text="More" />
-
-      {/* Button -> Tweet */}
-      <Button variant="outlined" className="sidebar__tweet" fullWidth>
-        Tweet
-      </Button>
-     <div className="logout-div">
-      <div className="user-profile">
-        {user && user.email}
+        <Menu
+          open={open}
+          onClose={handleClose}
+          id="long-menu"
+        >
+          {options.map((option) => (
+            <MenuItem key={option.link} onClick={handleClose}>
+              {option.icon} {option.link}
+            </MenuItem>
+          ))}
+        </Menu>
       </div>
-      <div className="logout">
-        <button onClick={handleLogout}>
-          Log out
-        </button>
-      </div>
-      </div>
-    </div>
   );
 }
 

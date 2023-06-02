@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const Signup = () => {
   const [email, setEmail] = useState("");

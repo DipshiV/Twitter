@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
 import './CSS/Login.css'
-import TwitterIcon from "@material-ui/icons/Twitter";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const Login = () => {
   const [email, setEmail] = useState("");

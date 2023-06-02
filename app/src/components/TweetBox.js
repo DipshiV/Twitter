@@ -1,6 +1,7 @@
 import React, { useState , useRef} from "react";
 import "./CSS/TweetBox.css";
-import { Avatar, Button } from "@material-ui/core";
+import { Avatar, Button } from "@mui/material";
+import image from "../WhatsApp Image 2023-05-28 at 8.47.42 PM.jpeg"
 
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
@@ -20,7 +21,7 @@ function TweetBox() {
     <div className="tweetBox">
       <form onSubmit={sendTweet}>
         <div className="tweetBox__input">
-          <Avatar src="https://pbs.twimg.com/profile_images/1621811810885312513/UctA5r8v_400x400.jpg" />
+          <Avatar src={image} />
           <input
             onChange={(e) => {
               setTweetMessage(e.target.value)
@@ -50,7 +51,7 @@ function TweetBox() {
 
       
     </div>
-    <div style={{width:"30vw" , height:"10vh" ,border:"3px solid white"}}>{msg} </div></>
+    <div style={{width:"30vw" , height:"10vh" }}>{msg} </div></>
   );
 }
 

@@ -1,57 +1,74 @@
-.sidebar {
-  border-right: 1px solid var(--twitter-background);
-  flex: 0.2;
-  /* width:30%; */
+.sidebar{
+  float: left;
+  width: 250px;
   min-width: 250px;
-  margin-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  /*overflow: hidden; */
+  padding: 20px 20px;
+  margin: 20px auto 0 auto;
+  box-shadow: 0 0 6px hsl(210 14% 90%);
 }
-
-.sidebar__twitterIcon {
-  color: var(--twitter-color);
-  font-size: 60px !important;
-  margin-left: 20px;
-  margin-bottom: 20px;
+.link{
+  display: flex;
+  align-items: cover;
+  cursor: pointer;
+  border-radius: 30px;
 }
-
-.sidebar__tweet {
-  background-color: var(--twitter-color) !important;
-  border: none !important;
-  color: white !important;
-  font-weight: 900 !important;
-  text-transform: inherit !important;
-  border-radius: 30px !important;
-  height: 50px !important;
-  margin-top: 20px !important;
+.link:hover{
+  background-color: #e8f5fe;
+  color: #50b7f5;
+  transition: color 100ms ease-out;
 }
-.logout-div {
-  border: 1px solid gray;
-  padding: 10px;
-  font-size: 15px;
+.link > h2{
+  font-weight: 700;
+  font-size: 20px;
+  margin-right: 20px;
+}
+#tweet{
   width: 100%;
-  background: black;
+  height: 50px;
+  background-color: hsl(203, 89%, 64%);
+  border-radius: 20px;
   color: white;
-  margin-top: 100px;
-  /* margin:20px; */
+  font-weight: 700;
+  text-transform: inherit;
 }
-.logout button {
-  background-color: var(--twitter-color) !important;
-  border: none !important;
-  color: white !important;
-  font-weight: 900 !important;
-  text-transform: inherit !important;
-  border-radius: 30px !important;
-  height: 50px !important;
-  margin-top: 10px !important;
+#moreLinks{
   width: 100%;
+  border-radius: 30px;
+  font-weight: 700;
+  justify-content: unset;
+  font-size: 20px;
+  margin-right: 20px;
+  text-transform: inherit;
+  color: black;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 30px;
+  margin-bottom: 5px;
 }
-
-.user-profile{
-  font-size: 15px;
-  overflow: hidden;
+#moreLinks .MuiSvgIcon-root{
+  margin-right: 20px;
+}
+#moreLinks:hover{
+  background-color: hsl(205, 92%, 95%);
+  color: hsl(203, 89%, 64%);
+  transition: color 100ms ease-out;
+}
+#long-menu .MuiMenu-paper{
+  width: 220px;
+  max-height: 100vh;
+  left: 40% !important;
+  top: unset !important;
+}
+#long-menu .MuiListItem-root{
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.MuiListItem-root:nth-child(6){
+  border-bottom: 1px solid hsl(210, 12%, 95%);
+}
+.MuiListItem-root .MuiSvgIcon-root{
+  font-size: 20px;
+  color: hsl(210, 12%, 20%);
+  font-weight: 400;
+  margin-right: 10px;
 }
