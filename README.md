@@ -11,5 +11,6 @@ Trending Feed Section: The trending feed section displays the most popular and e
 The project utilizes the following dependencies:
 
 React: A JavaScript library for building user interfaces.
-Recoil: A state management library for managing application state in React.
-Material UI: A popular UI component library for React, providing pre-designed and customizable components.
+Firebase: for saving data and authentication.
+Boostrap: for UI design and icons
+
